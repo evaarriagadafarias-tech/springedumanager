@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cursos - SpringEduManager</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            margin: 0;
+            padding: 40px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .acciones {
+            margin-bottom: 20px;
+        }
+
+        .boton {
+            display: inline-block;
+            padding: 10px 16px;
+            background: #0d6efd;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background: #212529;
+            color: white;
+        }
+
+        .vacio {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Gestión de Cursos</h1>
+
+        <div class="acciones">
+            <a class="boton" th:href="@{/cursos/nuevo}">
+                Registrar curso
+            </a>
+
+            <a class="boton" th:href="@{/estudiantes}">
+                Ver estudiantes
+            </a>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th>Docente</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <tr th:each="curso : ${cursos}">
+                    <td th:text="${curso.id}"></td>
+                    <td th:text="${curso.nombre}"></td>
+                    <td th:text="${curso.descripcion}"></td>
+                    <td th:text="${curso.docente}"></td>
+                </tr>
+
+                <tr th:if="${#lists.isEmpty(cursos)}">
+                    <td colspan="4" class="vacio">
+                        No hay cursos registrados.
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+
+    </div>
+
+</body>
+
+</html>
