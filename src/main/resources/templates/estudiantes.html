@@ -37,7 +37,23 @@
             background: #0d6efd;
             color: white;
             text-decoration: none;
+            border: none;
             border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-family: Arial, sans-serif;
+        }
+
+        .boton:hover {
+            opacity: 0.9;
+        }
+
+        .logout-form {
+            display: inline;
+        }
+
+        .cerrar-sesion {
+            background-color: #dc3545;
         }
 
         table {
@@ -72,6 +88,7 @@
         <h1>Gestión de Estudiantes</h1>
 
         <div class="acciones">
+
             <a class="boton" th:href="@{/estudiantes/nuevo}">
                 Registrar estudiante
             </a>
@@ -79,9 +96,22 @@
             <a class="boton" th:href="@{/cursos}">
                 Ver cursos
             </a>
+
+            <form class="logout-form"
+                  th:action="@{/logout}"
+                  method="post">
+
+                <button type="submit"
+                        class="boton cerrar-sesion">
+                    Cerrar sesión
+                </button>
+
+            </form>
+
         </div>
 
         <table>
+
             <thead>
                 <tr>
                     <th>ID</th>
@@ -107,6 +137,7 @@
                 </tr>
 
             </tbody>
+
         </table>
 
     </div>
